@@ -1,0 +1,9 @@
+.emptyState {
+  position: relative;
+  left: 300px;
+}
+
+.btn-add {
+  font-size: 10px;
+  margin: 10px;
+}

@@ -1,0 +1,45 @@
+<section>
+  <app-menu [apresentaBemvindo]="false"></app-menu>
+  <div class="btn-add">
+    <button type="button" class="btn  btn-lg btn-info" *ngIf="isAdm" (click)="acao(0, 0)">
+      <span class="bi-plus" aria-hidden="true" >Adicionar Cliente</span>
+    </button>
+  </div>
+  <div class="emptyState" *ngIf="clientes.length === 0">
+    <h1 class="m-lg-5">Nenhum cliente encontrado</h1>
+    <img src="assets/empty-state.png"/>
+  </div>
+
+  <table class="table mt-5" *ngIf="clientes.length > 0">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">CPF</th>
+      <th scope="col">Ação</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let cliente of clientes; let i = index">
+      <th scope="row">{{i + 1}}</th>
+      <td>{{cliente.nome}}</td>
+      <td>{{cliente.cpf | cpf}}</td>
+      <td>
+        <div>
+          <button type="button" class="btn btn-default btn-lg" *ngIf="isAdm">
+            <span class="bi-pencil-square" aria-hidden="true" (click)="acao(cliente.idCliente, 1)"></span>
+          </button>
+          <button type="button" class="btn btn-default btn-lg" *ngIf="isAdm || isComum">
+            <span class="bi-book" aria-hidden="true" (click)="acao(cliente.idCliente, 2)"></span>
+          </button>
+          <button type="button" class="btn btn-default btn-lg" *ngIf="isAdm">
+            <span class="bi-x-octagon" aria-hidden="true" (click)="acao(cliente.idCliente, 3)"></span>
+          </button>
+        </div>
+
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</section>
+
